@@ -1,9 +1,9 @@
 {
-  "mail": "Email address",
-  "title": "Subscribe to the newsletter",
-  "messageError": "Your e-mail adress is invalid or you are already subscribed!",
-  "placeholderSuccess": "You're subscribed !  🎉",
-  "placeholderDefault": "Enter your email",
-  "buttonSuccess": "Thank you!",
-  "buttonDefault": "Sign up"
+  "mail": "Endereço de email",
+  "title": "Subscreve a newsletter",
+  "messageError": "O teu endereço de email é inválido ou já está subscrito!",
+  "placeholderSuccess": "Subscreveste com sucesso! 🎉",
+  "placeholderDefault": "Insere o teu email",
+  "buttonSuccess": "Obrigado!",
+  "buttonDefault": "Subscrever"
 }
