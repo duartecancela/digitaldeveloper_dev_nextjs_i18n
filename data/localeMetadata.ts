@@ -3,11 +3,13 @@ type Metadata = {
 }
 
 export const maintitle: Metadata = {
-  en: 'Next.js i18n Starter Blog',
-  fr: 'Starter Blog Next.js i18n',
+  en: 'digitaldeveloper.dev',
+  fr: 'digitaldeveloper.dev',
+  pt: 'digitaldeveloper.dev',
 }
 
 export const maindescription: Metadata = {
-  en: 'A blog created with Next.js, i18n and Tailwind.css',
+  en: 'Software Engineering, Data Science, Web Development and Music Production.',
   fr: 'Un blog crée avec tailwind, i18n et next.js',
+  pt: 'Engenharia Informática, Ciência de Dados, Desenvolvimento Web e Produção Musical.',
 }

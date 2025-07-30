@@ -46,6 +46,26 @@ const projectsData: ProjectsData = {
       href: '/blog/the-time-machine',
     },
   ],
+
+  pt: [
+  {
+    title: 'Um Motor de Busca',
+    description: `E se pudesses procurar qualquer informação no mundo? Páginas web, imagens, vídeos
+      e muito mais. O Google tem muitas funcionalidades para te ajudar a encontrar exatamente
+      aquilo que procuras.`,
+    imgSrc: '/static/images/google.png',
+    href: 'https://www.google.com',
+  },
+  {
+    title: 'A Máquina do Tempo',
+    description: `Imagina poderes viajar no tempo — para o passado ou para o futuro. Basta girar o botão
+      para a data desejada e carregar em "Ir". Nunca mais te preocupes com chaves perdidas ou
+      auscultadores esquecidos com esta solução simples e acessível.`,
+    imgSrc: '/static/images/time-machine.jpg',
+    href: '/blog/the-time-machine',
+  },
+],
+
 }
 
 export default projectsData
