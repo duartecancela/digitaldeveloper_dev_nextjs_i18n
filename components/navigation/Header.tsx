@@ -3,7 +3,10 @@
 import { useParams, usePathname } from 'next/navigation'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
-import Logo from '@/data/logo.svg'
+import LightLogo from '@/data/light-logo.svg'
+import DarkLogo from '@/data/dark-logo.svg'
+import { useTheme } from '@/components/theme/ThemeContext'
+
 import Link from '../mdxcomponents/Link'
 import AuthorsMenu from './AuthorsMenu'
 import MobileNav from './MobileNav'
@@ -18,6 +21,9 @@ const Header = () => {
   const locale = useParams()?.locale as LocaleTypes
   const { t } = useTranslation(locale, 'common')
   const pathname = usePathname()
+  const { mounted, theme } = useTheme()
+const isDark = theme === 'dark'
+
 
   return (
     <header>
@@ -26,8 +32,9 @@ const Header = () => {
           <Link href={`/${locale}/`} aria-label={siteMetadata.headerTitle}>
             <div className="flex items-center justify-between">
               <div className="mr-3">
-                <Logo />
-              </div>
+  {mounted && (isDark ? <LightLogo /> : <DarkLogo />)}
+</div>
+
               {typeof siteMetadata.headerTitle === 'string' ? (
                 <div className="hidden h-6 text-2xl font-semibold sm:block">
                   {siteMetadata.headerTitle}
