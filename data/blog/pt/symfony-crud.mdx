@@ -1,0 +1,82 @@
+---
+title: Criar um CRUD no Symfony 7
+date: '2024-03-14'
+tags: ['Symfony', 'PHP', 'Web Development']
+draft: false
+summary: Guia passo a passo para criar um CRUD no Symfony 7 usando MakerBundle e Doctrine ORM.
+image: 'symfony_crud.png'
+authors: ['duarte-cancela']
+language: pt
+---
+
+Para criar um projeto Symfony com um CRUD associado a uma entidade Product através da linha de comandos, juntamente com a instalação do **MakerBundle** e do **ORM (Mapeamento Objeto-Relacional)**, podes seguir estes passos:
+
+## 1. Instalar o Symfony CLI
+
+Se ainda não o fizeste, precisas de instalar o Symfony CLI. Podes encontrar instruções de instalação aqui: https://symfony.com/download
+
+## 2. Criar Projeto Symfony
+
+Executa o seguinte comando para criar um novo projeto Symfony:
+
+```bash
+symfony new my_project_name --version="7.1.*" --webapp
+```
+
+> Substitui `my_project_name` pelo nome do teu projeto.
+
+## 3. Navegar para o Diretório do Projeto
+
+```bash
+cd my_project_name
+```
+
+## 4. Criar Entidade Product
+
+Para criar uma entidade Product, executa o seguinte comando:
+
+```bash
+php bin/console make:entity Product
+```
+
+Segue as instruções para definir os campos da tua entidade `Product`.
+
+## 5. Criar Operações CRUD
+
+Usa o MakerBundle do Symfony para criar as operações CRUD:
+
+```bash
+php bin/console make:crud Product
+```
+
+Este comando irá gerar controladores, formulários, templates e rotas para as operações CRUD associadas à entidade `Product`.
+
+## 6. Configuração da Base de Dados
+
+Se ainda não o fizeste, configura os dados de acesso à base de dados no ficheiro `.env`. Depois executa:
+
+```bash
+php bin/console doctrine:database:create
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+```
+
+Isto irá criar as tabelas necessárias para a tua entidade `Product`.
+
+## 7. Iniciar o Servidor Symfony
+
+```bash
+symfony server:start
+```
+
+## 8. Aceder à Interface CRUD
+
+Assim que o servidor estiver a correr, podes aceder à interface CRUD visitando:
+
+```
+http://localhost:8000/product
+```
+
+---
+
+E está feito! Criaste um projeto Symfony com operações CRUD para uma entidade Product usando a linha de comandos.

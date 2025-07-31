@@ -1,0 +1,47 @@
+---
+title: Como aceder a um servidor Linux através de SSH e configurar pares de chaves.
+date: '2023-04-05'
+tags: ['Security', 'System Administration', 'SSH', 'Linux']
+draft: false
+summary: Guia passo a passo sobre como aceder a um servidor Linux usando SSH com pares de chaves.
+image: 'flyd-unsplash.jpg'
+authors: ['duarte-cancela']
+language: pt
+---
+
+Para aceder a um servidor Linux com SSH e configurar pares de chaves, segue estes passos:
+
+1. **Gera um novo par de chaves** na tua máquina local (caso ainda não tenhas um) usando o comando `ssh-keygen`. Isto irá criar dois ficheiros:
+
+   - Uma chave privada (normalmente guardada em `~/.ssh/id_rsa`)
+   - Uma chave pública (guardada em `~/.ssh/id_rsa.pub`)
+
+2. **Copia a chave pública para o servidor** usando o comando `ssh-copy-id`. Isto irá adicionar a tua chave pública ao ficheiro `authorized_keys` no servidor, permitindo-te autenticar com a tua chave privada:
+
+   ```bash
+   ssh-copy-id user@server_address
+   ```
+
+3. Se `ssh-copy-id` não estiver instalado na tua máquina local, podes copiar manualmente o conteúdo do ficheiro da chave pública para o servidor usando um editor ou o seguinte comando:
+
+   ```bash
+   cat ~/.ssh/id_rsa.pub | ssh user@server_address "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys"
+   ```
+
+4. **Garante a segurança da chave privada** na tua máquina local definindo as permissões corretas:
+
+   ```bash
+   chmod 600 ~/.ssh/id_rsa
+   ```
+
+5. **Liga-te ao servidor** usando SSH e especificando o ficheiro da chave privada com a opção `-i`:
+
+   ```bash
+   ssh -i ~/.ssh/id_rsa user@server_address
+   ```
+
+> Se o ficheiro da tua chave tiver um nome diferente de `id_rsa`, substitui `id_rsa` no comando acima pelo nome correto do teu ficheiro de chave.
+
+E está feito! Deverás agora conseguir aceder ao teu servidor Linux via SSH com pares de chaves.
+
+_Photo by [FLY:D](https://unsplash.com/@flyd8?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/photos/HkTMcmlMOUQ?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)_
