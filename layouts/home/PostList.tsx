@@ -5,7 +5,6 @@ import { formatDate } from 'pliny/utils/formatDate'
 import { LocaleTypes } from 'app/[locale]/i18n/settings'
 import Image from '@/components/mdxcomponents/Image'
 
-
 interface Post {
   slug: string
   date: string
@@ -39,7 +38,6 @@ const PostList: React.FC<PostListProps> = ({ posts, locale, t, maxDisplay }) => 
           <li key={slug} className="py-12">
             <article>
               <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-start xl:space-y-0">
-
                 {/* Imagem + data alinhadas em coluna */}
                 <div className="flex flex-col xl:mr-4">
                   {imageSrc && (
@@ -50,7 +48,7 @@ const PostList: React.FC<PostListProps> = ({ posts, locale, t, maxDisplay }) => 
                           alt={title}
                           width={192}
                           height={108}
-                          className="rounded-md object-cover w-full h-auto"
+                          className="h-auto w-full rounded-md object-cover"
                         />
                       </Link>
                     </div>

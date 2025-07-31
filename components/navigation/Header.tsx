@@ -22,8 +22,7 @@ const Header = () => {
   const { t } = useTranslation(locale, 'common')
   const pathname = usePathname()
   const { mounted, theme } = useTheme()
-const isDark = theme === 'dark'
-
+  const isDark = theme === 'dark'
 
   return (
     <header>
@@ -31,9 +30,7 @@ const isDark = theme === 'dark'
         <div>
           <Link href={`/${locale}/`} aria-label={siteMetadata.headerTitle}>
             <div className="flex items-center justify-between">
-              <div className="mr-3">
-  {mounted && (isDark ? <LightLogo /> : <DarkLogo />)}
-</div>
+              <div className="mr-3">{mounted && (isDark ? <LightLogo /> : <DarkLogo />)}</div>
 
               {typeof siteMetadata.headerTitle === 'string' ? (
                 <div className="hidden h-6 text-2xl font-semibold sm:block">
