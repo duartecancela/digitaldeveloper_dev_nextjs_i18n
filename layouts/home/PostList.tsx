@@ -3,6 +3,8 @@ import Link from '@/components/mdxcomponents/Link'
 import Tag from '@/components/tag'
 import { formatDate } from 'pliny/utils/formatDate'
 import { LocaleTypes } from 'app/[locale]/i18n/settings'
+import Image from '@/components/mdxcomponents/Image'
+
 
 interface Post {
   slug: string
@@ -12,6 +14,7 @@ interface Post {
   tags: string[]
   language: string
   draft?: boolean
+  image?: string
 }
 
 interface PostListProps {
@@ -26,17 +29,35 @@ const PostList: React.FC<PostListProps> = ({ posts, locale, t, maxDisplay }) => 
     <ul className="divide-y divide-gray-200 dark:divide-gray-700">
       {!posts.length && <li>{t('noposts')}</li>}
       {posts.slice(0, maxDisplay).map((post) => {
-        const { slug, date, title, summary, tags } = post
+        const { slug, date, title, summary, tags, image } = post
+        const imageSrc = image ?? '/static/images/digitaldeveloper_dev.svg' //dummy image
         return (
           <li key={slug} className="py-12">
             <article>
-              <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                <dl>
-                  <dt className="sr-only">{t('pub')}</dt>
-                  <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                    <time dateTime={date}>{formatDate(date, locale)}</time>
-                  </dd>
-                </dl>
+              <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-start xl:space-y-0">
+
+                {/* Imagem + data alinhadas em coluna */}
+                <div className="flex flex-col xl:mr-4">
+                  {imageSrc && (
+                    <div className="mb-2">
+                      <Link href={`/${locale}/blog/${slug}`} aria-label={`Ver post ${title}`}>
+                        <Image
+                          src={imageSrc}
+                          alt={title}
+                          width={192}
+                          height={108}
+                          className="rounded-md object-cover w-full h-auto"
+                        />
+                      </Link>
+                    </div>
+                  )}
+                  <dl>
+                    <dt className="sr-only">{t('pub')}</dt>
+                    <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                      <time dateTime={date}>{formatDate(date, locale)}</time>
+                    </dd>
+                  </dl>
+                </div>
                 <div className="space-y-5 xl:col-span-3">
                   <div className="space-y-6">
                     <div>
