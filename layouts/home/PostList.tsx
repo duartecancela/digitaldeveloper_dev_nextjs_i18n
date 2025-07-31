@@ -30,7 +30,11 @@ const PostList: React.FC<PostListProps> = ({ posts, locale, t, maxDisplay }) => 
       {!posts.length && <li>{t('noposts')}</li>}
       {posts.slice(0, maxDisplay).map((post) => {
         const { slug, date, title, summary, tags, image } = post
-        const imageSrc = image ?? '/static/images/digitaldeveloper_dev.svg' //dummy image
+        const imageSrc =
+          image && image.trim() !== ''
+            ? `/static/images/${image}`
+            : '/static/images/digitaldeveloper_dev.svg'
+
         return (
           <li key={slug} className="py-12">
             <article>
