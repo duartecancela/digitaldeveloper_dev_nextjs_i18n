@@ -37,7 +37,7 @@ const Header = () => {
                   <DarkLogo className="h-auto w-24" />
                 ))}
               {typeof siteMetadata.headerTitle === 'string' ? (
-                <div className="ml-4 flex items-center text-sm md:text-base lg:text-2xl font-semibold">
+                <div className="ml-4 flex items-center text-sm font-semibold md:text-base lg:text-2xl">
                   {siteMetadata.headerTitle}
                 </div>
               ) : (
