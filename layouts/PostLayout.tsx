@@ -46,6 +46,12 @@ export default async function PostLayout({
   params: { locale },
 }: LayoutProps) {
   const { filePath, path, slug, date, title, tags, language, series, toc } = content
+
+  const imageSrc =
+    content.image && content.image.trim() !== ''
+      ? `/static/images/${content.image}`
+      : '/static/images/digitaldeveloper_dev.svg'
+
   const basePath = path.split('/')[0]
   const { t } = await createTranslation(locale, 'home')
   const tableOfContents: Toc = toc as unknown as Toc
@@ -57,7 +63,22 @@ export default async function PostLayout({
         <div className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
           <header className="pt-6 xl:pb-6">
             <div className="space-y-1 text-center">
-              <dl className="space-y-10">
+              {/* Title */}
+              <div>
+                <PageTitle>{title}</PageTitle>
+              </div>
+              {/* Image */}
+              <div className="my-4 flex justify-center">
+                <Image
+                  src={imageSrc}
+                  alt={title}
+                  width={672}
+                  height={378}
+                  className="h-auto w-full max-w-2xl rounded-md object-cover"
+                />
+              </div>
+              {/* Date */}
+              <dl className="mb-2">
                 <div>
                   <dt className="sr-only">{t('pub')}</dt>
                   <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
@@ -67,10 +88,8 @@ export default async function PostLayout({
                   </dd>
                 </div>
               </dl>
-              <div>
-                <PageTitle>{title}</PageTitle>
-              </div>
             </div>
+
           </header>
           <div className="grid-rows-[auto_1fr] divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0">
             <dl className="pb-10 pt-6 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700">
