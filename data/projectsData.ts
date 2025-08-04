@@ -17,6 +17,12 @@ const projectsData: ProjectsData = {
       imgSrc: '/static/images/stock-manager.png',
       href: '/blog/electronic-components-stock-manager',
     },
+    {
+      title: 'SoundExplorer – Audio Search and Analysis',
+      description: `Browse and analyze sound files like never before. This React-based web app connects to the Freesound.org API, offering advanced search by tags, duration, type and more – all in a responsive, accessible interface.`,
+      imgSrc: '/static/images/soundexplorer.png',
+      href: '/blog/sound-explorer',
+    },
   ],
 
   fr: [
